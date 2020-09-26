@@ -1,0 +1,20 @@
+name: Build and tests
+on: [push, pull_request]
+jobs:
+  # Build
+  Build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+      - name: Get the sources
+        uses: actions/checkout@v2
+      - name: Fetch all tags and branches
+        run: git fetch --prune --unshallow
+      - name: Build
+        run: .\build.ps1
+        shell: powershell
+      - name: Publish NuGet package as build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: NuGet Package
+          path: ./BuildArtifacts/Packages/NuGet/
