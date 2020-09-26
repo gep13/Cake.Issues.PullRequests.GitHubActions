@@ -12,6 +12,7 @@ BuildParameters.SetParameters(
     appVeyorAccountName: "cakecontrib",
     shouldPublishMyGet: false,
     shouldRunCodecov: true,
+    shouldRunDupFinder: false,
     shouldRunGitVersion: true);
 
 BuildParameters.PrintParameters(Context);
